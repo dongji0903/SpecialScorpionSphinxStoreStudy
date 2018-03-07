@@ -45,5 +45,8 @@ public class SetQuizController {
 
 		return getNextPage();
 	}*/
+	public static void main(String[] args) {
+		
+	}
 
 }
