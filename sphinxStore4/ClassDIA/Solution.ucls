@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.sphinx.korigin.study.study.domain.solution.ObjectiveSolution" 
+    project="sphinxStore4" 
+    file="/sphinxStore4/src/main/java/com/sphinx/korigin/study/study/domain/solution/ObjectiveSolution.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="94" width="208" x="41" y="225"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.sphinx.korigin.study.study.domain.solution.SubjectiveSolution" 
+    project="sphinxStore4" 
+    file="/sphinxStore4/src/main/java/com/sphinx/korigin/study/study/domain/solution/SubjectiveSolution.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="76" width="208" x="289" y="225"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.sphinx.korigin.study.study.domain.solution.Solution" project="sphinxStore4" 
+    file="/sphinxStore4/src/main/java/com/sphinx/korigin/study/study/domain/solution/Solution.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="148" width="208" x="165" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <generalization id="4">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="5">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

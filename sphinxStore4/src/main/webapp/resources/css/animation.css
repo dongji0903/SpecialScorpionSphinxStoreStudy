@@ -1,0 +1,236 @@
+@charset "UTF-8";
+
+#background_frame{
+position: relative;
+width: 200px;
+height: 200px;
+overflow: hidden;
+}
+
+#background_start{
+width: 800px;
+height: 200px;
+background-repeat:repeat-x;
+background-image:url("/DUG/upload/열대2.jpg");
+position: absolute;
+animation-timing-function: linear;
+animation-fill-mode: forwards; 
+animation-duration:2s;
+animation-name:move;
+animation-delay:0s;
+}
+
+@keyframes move{
+0%{left:0px;}
+100%{left:-400px;}
+}
+
+#gorilla_start {
+	top: 40%;
+	width:60px;
+	height:60px;
+	background-image:
+		url("/DUG/upload/run.gif");
+	background-size:contain;
+	background-repeat:no-repeat;
+	position: absolute;
+	animation-duration: 2s;
+	animation-delay: 0s;
+	animation-fill-mode: forwards; 
+	animation-name: run;
+	animation-timing-function: ease;
+}
+
+@keyframes run {
+0%{left: -60px;}
+100%{left: 40px;}
+}
+
+#tree_start {
+	top: 40%;
+	left: 150%;
+	width: 60px;
+	height: 60px;
+	background-image:
+		url("/DUG/upload/통나무1.png");
+	background-size:contain;
+	background-repeat:no-repeat;
+	position: absolute;
+	animation-duration: 2s;
+	animation-delay: 0s;
+	animation-fill-mode: forwards; 
+	animation-name: runs;
+	animation-timing-function: ease;
+}
+
+@keyframes runs {
+0%{left: 200px;}
+100%{left: 100px;}
+}
+
+#background_attack{
+width: 800px;
+height: 200px;
+background-repeat:repeat-x;
+background-image:url("/DUG/upload/열대2.jpg");
+}
+
+#gorilla_attack {
+	top: 40%;
+	left:40px;
+	width: 60px;
+	height: 60px;
+	background-image:
+		url("/DUG/upload/normalAttack.gif");
+	background-size:contain;
+	background-repeat:no-repeat;
+	position: absolute;
+	animation-duration: 2s;
+	animation-fill-mode: forwards; 
+	animation-name: attack_attack;
+	animation-timing-function: ease;
+}
+@keyframes attack_attack {
+0%{left: 40px;}
+50%{left: 50px;}
+100%{left: 40px;}
+}
+
+#tree_attack {
+	top: 40%;
+ 	left: 100px; 
+	width: 60px;
+	height: 60px;
+	background-image:
+		url("/DUG/upload/통나무1.png");
+	background-size:contain;
+	background-repeat:no-repeat;
+	position: absolute;
+	animation-duration: 2s;
+	animation-delay: 0s;
+	animation-fill-mode: forwards; 
+	animation-name: hitted_attack;
+	animation-timing-function: ease;
+}
+
+@keyframes hitted_attack {
+0%{left: 100px;}
+50%{left: 120px;}
+100%{left: 100px; }
+}
+
+#background_hitted{
+width: 800px;
+height: 200px;
+left:0px;
+background-repeat:repeat-x;
+background-image:url("/DUG/upload/열대2.jpg");
+position: relative;
+}
+
+#gorilla_hitted {
+	top: 40%;
+	left: 40px;
+	width: 60px;
+	height: 60px;
+	background-image:
+		url("/DUG/upload/damaged.gif");
+	background-size:contain;
+	background-repeat:no-repeat;
+	position: absolute;
+	animation-delay: 0s;
+	animation-duration: 2s;
+	animation-fill-mode: forwards; 
+	animation-name: hitted_hitted;
+	animation-timing-function: ease;
+}
+@keyframes hitted_hitted {
+0%{left: 40px;}
+50%{left: 20px;}
+100%{left: 40px;}
+}
+
+#tree_hitted {
+	top: 40%;
+ 	left: 100px; 
+	width: 60px;
+	height: 60px;
+	background-image:
+		url("/DUG/upload/통나무1.png");
+	background-size:contain;
+	background-repeat:no-repeat;
+	position: absolute;
+	animation-duration: 2s;
+	animation-delay: 0s;
+	animation-fill-mode: forwards; 
+	animation-name: attack_hitted;
+	animation-timing-function: ease;
+}
+
+@keyframes attack_hitted {
+0%{left: 100px;}
+50%{left: 90px;}
+100%{left: 100px; }
+}
+
+#background_clear{
+width: 800px;
+height: 200px;
+background-repeat:repeat-x;
+background-image:url("/DUG/upload/열대2.jpg");
+position: absolute;
+animation-timing-function: linear;
+animation-fill-mode: forwards; 
+animation-duration:2s;
+animation-name:move;
+animation-delay:0s;
+}
+
+@keyframes move_clear{
+0%{left:0px;}
+100%{left:-400px;}
+}
+
+#gorilla_clear {
+	top: 40%;
+	width: 60px;
+	height: 60px;
+	left: 40px;
+	background-image:
+		url("/DUG/upload/run.gif");
+	background-size:contain;
+	background-repeat:no-repeat;
+	position: absolute;
+	animation-duration: 2s;
+	animation-delay:0s;
+	animation-fill-mode: forwards; 
+	animation-name: run_clear;
+	animation-timing-function: ease;
+}
+
+@keyframes run_clear {
+0%{left: 40px;}
+100%{left: 200px;}
+}
+
+#tree_clear {
+	top: 40%;
+	left: 100px;
+	width: 60px;
+	height: 60px;
+	background-image:
+		url("/DUG/upload/통나무1.png");
+	background-size:contain;
+	background-repeat:no-repeat;
+	position: absolute;
+	animation-duration: 2s;
+	animation-delay: 0s;
+	animation-fill-mode: forwards; 
+	animation-name: gone;
+	animation-timing-function: ease;
+}
+
+@keyframes gone {
+0%{left: 100px;}
+100%{left: -60px;}
+}

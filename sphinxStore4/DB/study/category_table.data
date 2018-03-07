@@ -1,0 +1,23 @@
+C000001|NULL|reading
+C000002|NULL|writing
+C000003|NULL|grammar
+C000004|C000001|intermediate
+C000005|C000001|pre-intermediate
+C000006|C000004|diary
+C000007|C000004|article
+C000008|C000004|sentence order
+C000009|NULL|vocabulary
+C000010|C000009|pre-intermediate
+C000011|C000010|basic
+C000012|NULL|conversation
+C000013|C000012|pre-intermediate
+C000014|C000013|basic expression
+C000015|C000013|contextual dialogue
+C000016|C000013|acting expression
+C000017|C000012|intermediate
+C000018|C000017|finding main point
+C000019|C000005|basic sentence
+C000020|C000003|pre-intermediate
+C000021|C000020|adverb&&verbs,present
+C000022|C000020|verbs,past
+C000023|C000017|test
