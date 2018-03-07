@@ -13,7 +13,7 @@ select max(product_id), count(*) from PRODUCT
 
 update ORDERS set del=false
 
-insert into CATEGORY (category_id,category_name) values('CAT000001','한국공예품' );
+insert into CATEGORY (category_id,category_name) values('CAT000001','한국공예품' )
 insert into CATEGORY (category_id,category_name) values('CAT000002','국산주류' );
 insert into CATEGORY (category_id,category_name) values('CAT000003','식품' );
 insert into CATEGORY (category_id,category_name) values('CAT000016','여행상품' );
@@ -29,31 +29,6 @@ insert into CATEGORY (category_id,category_name,super_id) values('CAT000012','�
 insert into CATEGORY (category_id,category_name,super_id) values('CAT000013','김','CAT000003' );
 insert into CATEGORY (category_id,category_name,super_id) values('CAT000014','간장','CAT000003' );
 insert into CATEGORY (category_id,category_name,super_id) values('CAT000015','참기름','CAT000003' );
-
-insert into category_table(cid, title) values('C000001','reading');
-insert into category_table(cid, title) values('C000002','writing');
-insert into category_table(cid, title) values('C000003','grammar');
-insert into category_table(cid, parent_cid, title) values('C000004','C000001','intermediate');
-insert into category_table(cid, parent_cid, title) values('C000005','C000001','pre-intermediate');
-insert into category_table(cid, parent_cid, title) values('C000006','C000004','diary');
-insert into category_table(cid, parent_cid, title) values('C000007','C000004','article');
-insert into category_table(cid, parent_cid, title) values('C000008','C000004','sentence order');
-insert into category_table(cid, title) values('C000009','vocabulary');
-insert into category_table(cid, parent_cid, title) values('C000010','C000009','pre-intermediate');
-insert into category_table(cid, parent_cid, title) values('C000011','C000010','basic');
-insert into category_table(cid, title) values('C000012','conversation');
-insert into category_table(cid, parent_cid, title) values('C000013','C000012','pre-intermediate');
-insert into category_table(cid, parent_cid, title) values('C000014','C000013','basic expression');
-insert into category_table(cid, parent_cid, title) values('C000015','C000013','contextual dialogue');
-insert into category_table(cid, parent_cid, title) values('C000016','C000013','acting expression');
-insert into category_table(cid, parent_cid, title) values('C000017','C000012','intermediate');
-insert into category_table(cid, parent_cid, title) values('C000018','C000017','finding main point');
-insert into category_table(cid, parent_cid, title) values('C000019','C000005','basic sentence');
-insert into category_table(cid, parent_cid, title) values('C000020','C000003','pre-intermediate');
-insert into category_table(cid, parent_cid, title) values('C000021','C000020','adverb&&verbs,present');
-insert into category_table(cid, parent_cid, title) values('C000022','C000020','verbs,past');
-insert into category_table(cid, parent_cid, title) values('C000023','C000017','test');
-
 
 insert into PRODUCT (product_id, product_name, price, file_name, content, comment, regDate) 
 	values('PRODUCT000001','참이슬',300.0,'','상품설명','알코올~', DATE	('2018-02-08'));
@@ -85,8 +60,6 @@ insert into PRODUCT (product_id, product_name, price, file_name, content, commen
 insert into PRODUCT_CATEGORY_LINK (product_id, category_id) values('PRODUCT000008','CAT000009');
 insert into PRODUCT (product_id, product_name, price, file_name, content, comment, regDate) 
 	values('PRODUCT000008','국산막걸리',710.0,'','상품설명8','알코올~8', DATE('2018-02-08'));
-	
-insert into member ()
 	
 
 

@@ -1,29 +1,27 @@
-drop table member;
+drop table Customer;
 drop table Product;
 drop table Orders;
 drop table OrderItem;
 drop table Category;
-drop table Category_Table;
 drop table Options;
 drop table OptionValue;
 drop table Options_Link;
 drop table Point_Log
 
 create table Member (
-	mid				varchar(50) primary key,
+	customer_id		varchar(50)	Primary key,
 	id				varchar(50),
-	pass			varchar(50),
+	password		varchar(50),
 	name			varchar(50),
-	nickname		varchar(50),
+	nick_name		varchar(50),
 	email			varchar(50),
-	member_type		varchar(10),
 	addr			varchar(200),
 	national_code	varchar(10),
 	phone_num		varchar(15),
+	joinDate 		Date,
 	point			integer,
 	level 			varchar(50) DEFAULT 'Level 1',
 	EXP 			integer 	DEFAULT 0,
-	joinDate 		Date,
 	del 			boolean 	default false not null
 );
 
@@ -107,8 +105,7 @@ create table Category_Table (
 create table Category (
 	category_id			varchar(50) PRIMARY KEY,
 	category_name		varchar(50),
-	super_id			varchar(50),
-	del					boolean default false not null
+	super_id			varchar(50)
 );
 
 create table Question (

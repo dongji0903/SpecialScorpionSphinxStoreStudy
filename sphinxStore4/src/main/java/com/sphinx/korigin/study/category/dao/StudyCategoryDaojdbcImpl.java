@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.apache.derby.tools.sysinfo;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -16,8 +15,10 @@ import org.springframework.stereotype.Repository;
 import com.sphinx.korigin.common.dao.AbstractDaoJdbc;
 import com.sphinx.korigin.study.category.domain.Category;
 
+
 @Repository("StudyCategoryDao")
 public class StudyCategoryDaojdbcImpl extends AbstractDaoJdbc implements StudyCategoryDao {
+
 
 	private String sql;
 
@@ -26,7 +27,9 @@ public class StudyCategoryDaojdbcImpl extends AbstractDaoJdbc implements StudyCa
 		String newCid = generateID("CATEGORY_TABLE", "CID", "C");
 		sql = "insert into category_table (cid,parent_cid, title) values (?, ?, ?)";
 		try {
-			jdbcTemplate.update(sql, new Object[] { newCid, c.getParent(), c.getTitle() });
+			jdbcTemplate.update(sql, new Object[] {
+					newCid,c.getParent(),c.getTitle()
+			});
 			return newCid;
 		} catch (DataAccessException e) {
 			// TODO Auto-generated catch block
@@ -36,7 +39,7 @@ public class StudyCategoryDaojdbcImpl extends AbstractDaoJdbc implements StudyCa
 	}
 
 	@Override
-	public Map<String, Category> findAllCategory() {
+	public Map<String, Category> findAllCategory() { 
 		Map<String, Category> categoryMap = new TreeMap<>();
 		Map<String, List<String>> familyMap = new HashMap<>();
 		sql = "select cid, parent_cid, title from category_table";
@@ -77,11 +80,11 @@ public class StudyCategoryDaojdbcImpl extends AbstractDaoJdbc implements StudyCa
 			@Override
 			public Category mapRow(ResultSet rs, int arg1) throws SQLException {
 				// TODO Auto-generated method stub
-				return new Category(cid, rs.getString(1), rs.getString(2), null);
+				return new Category(cid,rs.getString(1),rs.getString(2),null);
 			}
-		}, cid);
+		},cid);
 		sql = "select cid from category_table where parent_cid=?";
-		List<String> children = jdbcTemplate.query(sql, new RowMapper<String>() {
+		List<String> children =jdbcTemplate.query(sql, new RowMapper<String>() {
 			@Override
 			public String mapRow(ResultSet rs, int arg1) throws SQLException {
 				// TODO Auto-generated method stub
@@ -93,22 +96,24 @@ public class StudyCategoryDaojdbcImpl extends AbstractDaoJdbc implements StudyCa
 	}
 
 	@Override
-	public void modifyCategory(Category c) {
+	public void modifyCategory(Category c) { 
 		sql = "update category_table set parent_cid=?, title=? where cid=?";
-		jdbcTemplate.update(sql, new Object[] { c.getParent(), c.getTitle(), c.getCid() });
+		jdbcTemplate.update(sql, new Object[] {
+			c.getParent(),c.getTitle(),c.getCid()	
+		});
 	}
 
 	@Override
 	public List<Category> findCategoryByTitle(String title) {
 		List<Category> categoryList = new ArrayList<>();
 		sql = "select cid from category_table where title=?";
-		List<String> cidList = jdbcTemplate.query(sql, new RowMapper<String>() {
+		List<String> cidList =jdbcTemplate.query(sql, new RowMapper<String>(){
 
 			@Override
 			public String mapRow(ResultSet rs, int arg1) throws SQLException {
 				return rs.getString(1);
 			}
-
+			
 		}, title);
 		for (String s : cidList) {
 			categoryList.add(findCategory(s));
@@ -123,7 +128,7 @@ public class StudyCategoryDaojdbcImpl extends AbstractDaoJdbc implements StudyCa
 	}
 
 	@Override
-	public void deleteCascadeCategory(String cid) {
+	public void deleteCascadeCategory(String cid) { 
 		Category category = findCategory(cid);
 		if (category.getChildren() != null && !category.getChildren().isEmpty()) {
 			for (String c : category.getChildren()) {
@@ -136,7 +141,7 @@ public class StudyCategoryDaojdbcImpl extends AbstractDaoJdbc implements StudyCa
 	@Override
 	public List<Category> findFirstCategories() {
 		sql = "select cid from category_table where parent_cid is null or parent_cid=''";
-		List<Category> categoryList = new ArrayList<>();
+		List<Category> categoryList = new ArrayList<>(); 
 		List<String> sList = jdbcTemplate.query(sql, new RowMapper<String>() {
 			@Override
 			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
