@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.sphinx.korigin.study.study.domain.answer.Answer" project="sphinxStore4" 
+    file="/sphinxStore4/src/main/java/com/sphinx/korigin/study/study/domain/answer/Answer.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="166" width="205" x="286" y="243"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.sphinx.korigin.study.study.domain.answer.AnswerSheet" project="sphinxStore4" 
+    file="/sphinxStore4/src/main/java/com/sphinx/korigin/study/study/domain/answer/AnswerSheet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="166" width="205" x="286" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.sphinx.korigin.study.study.domain.answer.AnswerSheetForList" 
+    project="sphinxStore4" 
+    file="/sphinxStore4/src/main/java/com/sphinx/korigin/study/study/domain/answer/AnswerSheetForList.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="148" width="205" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <association id="4">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="5" name="AnswerList"/>      
+      <multiplicity id="6" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
