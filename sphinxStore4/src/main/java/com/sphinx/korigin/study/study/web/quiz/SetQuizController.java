@@ -14,11 +14,11 @@ import com.sphinx.korigin.study.category.domain.Category;
 @Controller
 public class SetQuizController {
 
-	@RequestMapping(value = "/quiz/", method = RequestMethod.GET)
+	@RequestMapping(value = "/study/quiz/setCategory", method = RequestMethod.GET)
 	public String setCategoryView(WebApplicationContext context, Model m) {
 		List<Category> studyRootCategoryList = (List<Category>) context.getServletContext()
 				.getAttribute("studyRootCategoryList");
 		m.addAttribute("categories", studyRootCategoryList);
-		return null;
+		return "korigin/study/study/quiz/selectCategory";
 	}
 }
