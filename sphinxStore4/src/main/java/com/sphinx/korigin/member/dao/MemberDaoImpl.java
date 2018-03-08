@@ -179,10 +179,10 @@ public class MemberDaoImpl extends AbstractDaoJdbc implements MemberDao {
 					return id;
 				}
 			}, nickName);
-		} catch (NullPointerException e) {
-			return true;
+		} catch (Exception e) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	@Override

@@ -5,19 +5,16 @@
 <html>
 <head>
 <title>회 원 가 입</title>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/dug_Korea.css">
-
 <script type="text/javascript">
 function findId() {
 	if(idCheck()){
-		var url= "/DUG/member/idCheck.do?userId=" + document.frm1.userId.value;
+		var url= "<%=request.getContextPath()%>/member/idCheck?userId=" + document.frm1.userId.value;
 		 window.open(url,"_blank_1","toolbar=no,menubar=no,scrollbars=yes,resizable=no, width=450, height=200" );
 	}
 }
 function findNick() {
 	if(nickCheck()){
-		var url= "/DUG/member/nickCheck.do?nickName=" + document.frm1.nickName.value;
+		var url= "<%=request.getContextPath()%>/member/nickCheck?nickName=" + document.frm1.nickName.value;
 		window.open(url,"_blank_1","toolbar=no,menubar=no,scrollbars=yes,resizable=no, width=450, height=200" );
 	}
 }
@@ -80,18 +77,11 @@ function submitCheck() {
 </head>
 
 <body>
-	<div id="wrap" align="center">
-
-		<div id="header">
-			<jsp:include page="/form/header_Form.jsp" />
-		</div>
-
-		<div id="middle">
 			<h1>Join MemberShip</h1>
 			<div style="text-align: left; padding-left: 200px">
 				<font style="color: red">*</font>필수입력정보입니다.
 			</div>
-			<form action="<%=request.getContextPath()%>/member/joinMember.do" method="post" name="frm1">
+			<form action="<%=request.getContextPath()%>/member/join" method="post" name="frm1">
 				<table style="width: 600px;">
 					<tr>
 						<th width="167px">Id<font style="color: red">*</font></th>
@@ -161,18 +151,6 @@ function submitCheck() {
 							- <input type="text" size="5" maxlength="4" name="userPhoneNum2" /></td>
 
 					</tr>
-					<tr>
-						<th>취미</th>
-						<td><input type="checkbox" name="userHobby" value="수영" />수영
-							<input type="checkbox" name="userHobby" value="배구" />배구 <input
-							type="checkbox" name="userHobby" value="프로그래밍" />프로그래밍 <input
-							type="checkbox" name="userHobby" value="독서" />독서 <br> <input
-							type="checkbox" name="userHobby" value="자바" />자바 <input
-							type="checkbox" name="userHobby" value="라면먹기" />라면먹기 <input
-							type="checkbox" name="userHobby" value="낮잠" />낮잠 <br> <input
-							type="checkbox" name="userHobby" />기타 <input type="text"
-							name="userOtherHobby" /></td>
-					</tr>
 				</table>
 
 				<div align="center">
@@ -184,15 +162,6 @@ function submitCheck() {
 						style="margin: 1px; background-color: buttonhighlight;">
 				</div>
 			</form>
-
-		</div>
-
-		<div id="footer">
-			<div
-				style="background-color: maroon; min-height: 4px; margin-bottom: 4px;"></div>
-			<jsp:include page="/form/footer_Form.jsp" />
-		</div>
-	</div>
 
 </body>
 </html>

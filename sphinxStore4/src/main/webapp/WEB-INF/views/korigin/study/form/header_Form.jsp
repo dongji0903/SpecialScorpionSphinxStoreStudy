@@ -99,7 +99,7 @@
 				PW : <input onkeyup="enterKey()" type="password" size="14"
 					name="Password">&nbsp; <a href="#"
 					onclick="loginCheck()"> Login </a>&nbsp;&nbsp;&nbsp; <a
-					href="<%=request.getContextPath()%>/member/login/joinMembership.jsp">
+					href="<%=request.getContextPath()%>/member/join">
 					Join </a>&nbsp;
 			</form>
 

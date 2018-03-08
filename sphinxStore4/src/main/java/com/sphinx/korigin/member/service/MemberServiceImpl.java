@@ -31,4 +31,9 @@ public class MemberServiceImpl implements MemberService {
 	public int checkId(String id) {
 		return memberDao.countByMemberId(id);
 	}
+
+	@Override
+	public boolean nickCheck(String nickName) {
+		return memberDao.isExistingNickName(nickName);
+	}
 }

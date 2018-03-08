@@ -8,4 +8,6 @@ public interface MemberService {
 	public String addCustomer(Member customer);
 	
 	public int checkId(String id);
+	
+	public boolean nickCheck(String nickName);
 }

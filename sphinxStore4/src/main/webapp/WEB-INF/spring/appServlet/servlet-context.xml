@@ -22,7 +22,6 @@
 	
 	<!-- 컨트롤러 탐색범위 -->
 	<context:component-scan base-package="com.sphinx.korigin" />
-	<context:component-scan base-package="jvx330.mod007" />
 
 	
 	
