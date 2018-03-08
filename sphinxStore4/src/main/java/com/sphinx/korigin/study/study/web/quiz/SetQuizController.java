@@ -8,45 +8,54 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.sphinx.korigin.study.study.domain.answer.Answer;
+import com.sphinx.korigin.study.study.domain.question.Question;
 
 @Controller
 public class SetQuizController {
 
-	/*TestSheetService ts = new TestSheetServiceImpl();
-	AnswerSheetService as = new AnswerSheetServiceImpl();
-	StudyCategoryDao cd = new StudyCategoryDaojdbcImpl();
-	CategoryService cs = new CategoryServiceImpl();
+	/*
+	 * TestSheetService ts = new TestSheetServiceImpl(); AnswerSheetService as = new
+	 * AnswerSheetServiceImpl(); StudyCategoryDao cd = new
+	 * StudyCategoryDaojdbcImpl(); CategoryService cs = new CategoryServiceImpl();
+	 */
 
-	@Override
-	public String execute(HttpServletRequest request,
-			HttpServletResponse response) {
-		HttpSession session = request.getSession();
-
-		String catgoryId = request.getParameter("hiddenCategory");
+	@RequestMapping()
+	public String setQuiz(Model m, @RequestParam("hiddenCategory") String catgoryId,
+			@RequestParam("numOfQuestion") int totalCount) {
 		
-		 * int totalCount = Integer
-		 * .parseInt(request.getParameter("numOfQuestion"));
-		 
-
 		List<Question> questionList = new ArrayList<Question>();
 		List<Answer> answerList = new ArrayList<>();
 
-		session.setAttribute("myAnswers", answerList); // 세션에 내 답안 리스트 등록
-		 지정된 카테고리로 문제를 불러옴. 개수 초과시 null 
-		questionList = ts.findQuestionsOfCategory(
-				new ShoppingCategory(catgoryId, null, null), 20);
-		System.out.println(catgoryId);
-		session.setAttribute("questions", questionList); // 문제 리스트 저장
-		request.setAttribute("question", questionList.get(0));
-		session.setAttribute("totalNumOfQuestion", 20);
-		session.setAttribute("questionNum", 0); // 현재 문제번호:0(미출제 상태)
-		request.setAttribute("hp", 100);
-		request.setAttribute("bossHP", 5);
+		return null;
 
-		return getNextPage();
-	}*/
-	public static void main(String[] args) {
-		
 	}
 
+	/*
+	 * @Override public String execute(HttpServletRequest request,
+	 * HttpServletResponse response) { HttpSession session = request.getSession();
+	 * 
+	 * String catgoryId = request.getParameter("hiddenCategory");
+	 * 
+	 * int totalCount = Integer .parseInt(request.getParameter("numOfQuestion"));
+	 * 
+	 * 
+	 * List<Question> questionList = new ArrayList<Question>(); List<Answer>
+	 * answerList = new ArrayList<>();
+	 * 
+	 * session.setAttribute("myAnswers", answerList); // 세션에 내 답안 리스트 등록 지정된 카테고리로
+	 * 문제를 불러옴. 개수 초과시 null questionList = ts.findQuestionsOfCategory( new
+	 * ShoppingCategory(catgoryId, null, null), 20); System.out.println(catgoryId);
+	 * session.setAttribute("questions", questionList); // 문제 리스트 저장
+	 * request.setAttribute("question", questionList.get(0));
+	 * session.setAttribute("totalNumOfQuestion", 20);
+	 * session.setAttribute("questionNum", 0); // 현재 문제번호:0(미출제 상태)
+	 * request.setAttribute("hp", 100); request.setAttribute("bossHP", 5);
+	 * 
+	 * return getNextPage(); }
+	 */
 }
