@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<bean name="bar" class="jvx330.mod003.ex1.Bar"></bean>
+	<!-- <bean name="foo" 
+		class="jvx330.mod003.ex1.Foo">  생성자방식
+		<constructor-arg ref="bar"></constructor-arg>	생성자의 아규먼트
+	</bean> -->
+	<bean name="foo2" class="jvx330.mod003.ex1.Foo"> <!-- property방식 -->
+		<property name="bar" ref="bar"></property>
+	</bean>
+</beans>

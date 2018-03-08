@@ -1,0 +1,32 @@
+﻿
+
+/*툴팁 스타일*/
+a.tip {
+    position: relative;
+}
+
+a.tip span {
+	opacity: 0.9;
+    display: none;
+    border: solid 1px gray;
+    position: absolute;
+    top: 0;
+    left:100%;
+    max-height:95px;
+    width: 125px;
+    padding: 10px;
+    z-index: 100;
+    background: white;
+    color: black;
+    -moz-border-radius: 5px; /* 파폭 박스 둥근 정도 */
+    -webkit-border-radius: 5px; /* 사파리 박스 둥근 정도 */
+    overflow-x:hidden; overflow-x:auto; overflow-y:scroll;
+}
+
+a:hover.tip span {
+    display: block;
+}
+
+.menu:hover {
+	text-decoration: underline;
+}

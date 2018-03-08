@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<bean name="addrList" class="jvx330.mod003.ex3.AddressInfoList">
+		<property name="addrList">
+			<list value-type="java.lang.String">
+				<value>서울</value>
+				<value>대구</value>
+				<value>부산</value>
+			</list>		
+		</property>
+	</bean>
+	
+	<!--맵 쓸때
+	<bean name="addrList" class="jvx330.mod003.ex3.AddressInfoList">
+		<property name="addrList">
+			<map> Set은 set
+				<entry>
+					<key><value>spring</value></key>
+					<ref bean=""/>
+				</entry>
+			</map>		
+		</property>
+	</bean> -->
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<bean name="byTypeClient" class="jvx330.mod003.ex4.ByTypeClient" 
+	autowire="byType">
+		<!-- <property name="namingService" ref="dnsNamingService"></property> -->
+	</bean>
+	
+	<bean name="dnsNamingService" class="jvx330.mod003.ex4.DnsNamingService"></bean>
+
+</beans>

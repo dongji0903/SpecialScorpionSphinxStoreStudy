@@ -1,0 +1,17 @@
+.table{
+	display: table;
+}
+.tr{
+	display: table-row;
+}
+.td{
+	display: table-cell;
+	padding: 10px;
+}
+.tableline{
+	border-bottom: solid 0.2px #aaccaa;
+}
+.tablecss{
+	background: #9CD8A7;
+	border-bottom: solid 0.2px #aaccaa;
+}

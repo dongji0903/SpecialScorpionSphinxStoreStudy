@@ -1,0 +1,119 @@
+package com.sphinx.beautea.order.web.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.sphinx.beautea.customer.domain.Customer;
+import com.sphinx.beautea.customer.service.CustomerService;
+import com.sphinx.beautea.order.domain.Cart;
+import com.sphinx.beautea.order.domain.Order;
+import com.sphinx.beautea.order.domain.OrderItem;
+import com.sphinx.beautea.order.service.OrderItemService;
+import com.sphinx.beautea.order.service.OrderService;
+import com.sphinx.beautea.order.web.command.OrderCommand;
+
+@Controller
+public class PaymentController {
+	@Autowired
+	OrderService orderService;
+	@Autowired
+	OrderItemService orderItemService;
+	@Autowired
+	CustomerService customerService;
+	
+	@RequestMapping(value = "/order/payment", method = RequestMethod.POST)
+	public String payment(@ModelAttribute OrderCommand orderCommand, 
+			HttpServletRequest request) {
+		int[] level = {1, 2, 3, 4};
+		int[] exp = {50000, 150000, 500000, 2000000};
+		try {
+			HttpSession session = request.getSession();
+			
+			double totalPrice = orderCommand.getTotalPrice();
+			String recipient = orderCommand.getRecipient();
+			String recipientAddr = orderCommand.getRecipientAddr();
+			String memo = orderCommand.getMemo();
+			Customer customer = 
+					null;
+			Order order = new Order();
+			if(session.getAttribute("customer") == null) {
+				order.setCustomerId("1");
+			} else {
+				customer = (Customer)session.getAttribute("customer");
+				order.setCustomerId(customer.getCustomerId());
+			}
+			order.setTotalPrice(totalPrice);
+			order.setRecipient(recipient);
+			order.setRecipientAddr(recipientAddr);
+			order.setMemo(memo);
+			order.setState("상품준비중");
+			String orderId = orderService.addOrder(order);
+			
+			Cart cart = (Cart)session.getAttribute("cart");
+			Map<String, OrderItem> orderItemMap = cart.getOrderItemMap();
+			List<String> orderItemList = (List<String>)session.getAttribute("orderItemList");
+			List<OrderItem> orderItems = new ArrayList<>();
+			for(String key : orderItemList) {
+				OrderItem orderItem = orderItemMap.get(key);
+				orderItem.setState("상품준비중");
+				orderItemService.addOrderItem(orderItem, orderId);
+				cart.removeOrderItem(orderItem.getOrderItemId());
+				orderItems.add(orderItem);
+			}
+			
+			if(cart.getOrderItemMap().size() < 1) {
+				session.removeAttribute("cart");
+			}
+			
+			int point = (int)(totalPrice/100) * 3;
+			customer.setPoint(customer.getPoint() + point);
+			
+			
+			//회원 레벨업 체크
+			int customerLevel = customer.getLevel(); //회원의 등급
+			int price = (int)orderService.sumTotalPricePurchased(customer.getCustomerId()); //회원 총 구매금액
+			
+			for (int i = 0; i < exp.length; i++) {
+				if (price < exp[i]) {
+						customer.setLevel(level[i]);
+						break;
+				}
+				
+				if (price >= 2000000 && customer.getLevel() < 5) {
+					customer.setLevel(5);
+				}
+			}
+			
+			customerService.updateCustomer(customer);
+			
+			session.removeAttribute("orderItemList");
+			session.removeAttribute("customer");
+			session.setAttribute("customer", customer);
+			
+			if(session.getAttribute("customer") != null) {
+				customer = (Customer)session.getAttribute("customer");
+				session.setAttribute("totalPurchase", orderService.sumTotalPricePurchased(customer.getCustomerId()));
+			}
+			
+			session.setAttribute("customerOrderId", orderId);
+			session.setAttribute("orderItems", orderItems);
+			session.setAttribute("totalPrice", totalPrice);
+		} catch(NullPointerException e) {
+			String error = "잘못된 접근입니다.";
+			request.setAttribute("error", error);
+			return "error_page";
+		}
+		
+		return "redirect: /order/successorder";
+	}
+}

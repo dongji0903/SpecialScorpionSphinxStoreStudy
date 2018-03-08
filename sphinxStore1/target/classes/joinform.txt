@@ -1,0 +1,44 @@
+﻿lang:Korea
+회원가입
+아이디
+비밀번호
+이름
+전화번호
+생년월일
+이메일
+
+lang:English
+Sign UP
+Id
+Password
+Name
+Phone number
+Birthday
+Email
+
+lang:Spain
+Membresía
+Identificación
+Contraseña
+Nombre
+Número de teléfono
+Fecha de nacimiento
+Correo electrónico
+
+lang:China
+报名
+用户名
+密码
+名
+电话号码
+出生日期
+电子邮件
+
+lang:Japan
+会員登録
+ユーザ名
+パスワード
+名前
+電話番号
+生年月日
+メール
