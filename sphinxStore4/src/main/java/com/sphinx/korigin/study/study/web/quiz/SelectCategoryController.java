@@ -21,8 +21,12 @@ public class SelectCategoryController {
 	private WebApplicationContext context;
 
 	@RequestMapping(value = "/study/selectCategory", method = RequestMethod.GET)
-	public String selectCategoryView() {
-		return "include:study/quiz/selectCategory";
+	public String selectCategoryView(Model m) {
+		List<Category> studyRootCategoryList = (List<Category>) context.getServletContext()
+				.getAttribute("studyRootCategoryList");
+		m.addAttribute("categories", studyRootCategoryList);
+		m.addAttribute("url", "korigin/study/study/quiz/selectCategory.jsp");
+		return "korigin/study/form/main_Form";
 	}
 
 	@RequestMapping(value = "/study/selectCategory", method = RequestMethod.POST)
