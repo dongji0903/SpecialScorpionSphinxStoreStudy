@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -148,21 +146,48 @@ public class EditProductController {
 			
 			
 			List<Option> optionList = optionService.getOptionListByProductId(productId);
-			for(String chkStr : chkOption) {
-				int chk = Integer.parseInt(chkStr);
-				Option option = optionList.get(chk); 
-				option.setOptionName(optionName[chk]);
-				String[] optionValue = request.getParameterValues("detailoption" + chk);
-				String[] addPriceStr = request.getParameterValues("amount" + chk);
-				Map<String, Double> valueMap = new HashMap<>();
-				optionService.deleteOptionValue(option.getOptionId());
-				for(int i = 0; i < optionValue.length; i++) {
-					double addPrice = Double.parseDouble(addPriceStr[i]);
-					valueMap.put(optionValue[i], addPrice);
+			if(chkOption.length == optionList.size()) {
+				for(String chkStr : chkOption) {
+					int chk = Integer.parseInt(chkStr);
+					Option option = optionList.get(chk); 
+					option.setOptionName(optionName[chk]);
+					String[] optionValue = request.getParameterValues("detailoption" + chk);
+					String[] addPriceStr = request.getParameterValues("amount" + chk);
+					System.out.println(optionValue.length);
+					Map<String, Double> valueMap = new HashMap<>();
+					if(option.getOptionValueMap() != null) { //밸류가 있을 경우 삭제한 후 재등록하겠다.
+						optionService.deleteOptionValue(option.getOptionId());
+					}
+					for(int i = 0; i < optionValue.length; i++) {
+						double addPrice = Double.parseDouble(addPriceStr[i]);
+						valueMap.put(optionValue[i], addPrice);
+					}
+					option.setOptionValueMap(valueMap);
+					optionService.updateOption(option);
+					optionList.add(option);
 				}
-				option.setOptionValueMap(valueMap);
-				optionService.updateOption(option);
-				optionList.add(option);
+			} else {
+				for(Option o : optionList) {
+					if(o.getOptionValueMap() != null) {
+						optionService.deleteOptionValue(o.getOptionId());
+					}
+					optionService.deleteOption(o);
+				}
+				for(String chkStr : chkOption) {
+					int chk = Integer.parseInt(chkStr);
+					Option option = new Option();
+					option.setOptionName(optionName[chk]);
+					String[] optionValue = request.getParameterValues("detailoption" + chk);
+					String[] addPriceStr = request.getParameterValues("amount" + chk);
+					Map<String, Double> valueMap = new HashMap<>();
+					for(int i = 0; i < optionValue.length; i++) {
+						double addPrice = Double.parseDouble(addPriceStr[i]);
+						valueMap.put(optionValue[i], addPrice);
+					}
+					option.setOptionValueMap(valueMap);
+					optionService.addOption(option, productId);
+					optionList.add(option);
+				}
 			}
 			
 			product.setOptionList(optionList);

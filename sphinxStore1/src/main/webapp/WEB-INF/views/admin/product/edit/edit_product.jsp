@@ -352,32 +352,32 @@ function pasteHTML(filepath){
               	상품의 옵션을 지정하는 단계입니다. 옵션을 추가하려면 '옵션추가'버튼을 상세옵션을 추가하려면 '상세옵션 추가'버튼을 클릭해주세요.<br><br>
               	<font style="font-weight: bold;">옵션예시 : 옵션명 - 색상, 상세옵션 : 빨간색,추가액 1000원</font><br><br>
               	<div id="detailoption">
-              	<div id="div0" style="border: 0.5px solid #BDBDBD; padding: 10px;">
-              	<input type="hidden" name="chkOption" value="0">
-              	<p style="cursor: pointer; border-bottom: 0.5px solid #BDBDBD;" onclick="addOption()" id="0op">옵션 추가</p>
-	              	<p style="float: right; cursor: pointer;" onclick="detailOption(this.id)" id="0op">상세옵션 추가</p>
-		              	옵션명 <input type="text" value="${product.optionList.get(0).optionName}" class="option" id="0" name="optionName" placeholder="옵션의 명칭을 입력해주세요."
-		              	style="width: 80%; height: 20px; padding-left:5px; padding-right:5px; font-size: 13px;"><br>
-		              <c:forEach var="key" items="${product.optionList.get(0).optionValueMap.keySet()}">
-		              	<div><input type='text' value="${key}" style='width:40%' name='detailoption0op' class='detailoption' placeholder='상세옵션의 명칭을 입력해주세요.'>
-						<input type='text' value="${product.optionList.get(0).optionValueMap.get(key)}" style='margin-left:5px; width:40%' name='amount0op' class='amount' placeholder='추가액을 입력해주세요.'>
-						<img onclick='removeDetail(this);' style='cursor:pointer; padding-top:5px; width:10px;' src='<%=request.getContextPath()%>/resources/images/icon/delete.png'></div>
-		              </c:forEach>	
-		        </div>
-		        <c:forEach begin="1" end="${product.optionList.size()}" var="option" items="${product.optionList}" varStatus="status">
-					<input type='hidden' name='chkOption' value='${status.count}'>
-					<div id='div${status.count}' style='border: 0.5px solid #BDBDBD; padding: 10px;'>
-					<p style='cursor: pointer; border-bottom: 0.5px solid #BDBDBD;' onclick='removeDetail(this)'>옵션 삭제</p>
-					<p style='float: right; cursor: pointer;' onclick='detailOption(this.id)' id='${status.count}op'>상세옵션 추가</p>
-						옵션명 <input type='text' value="${option.optionName}" class='option' id='${status.count}' name='optionName' placeholder='옵션의 명칭을 입력해주세요.'
-					 	style='width: 80%; height: 20px; padding-left:5px; padding-right:5px; font-size: 13px;'><br>
-					 	<c:forEach var="key" items="${option.optionValueMap.keySet()}">
-		              	<div><input type='text' value="${key}" style='width:40%' name='detailoption${status.count}op' class='detailoption' placeholder='상세옵션의 명칭을 입력해주세요.'>
-						<input type='text' value="${option.optionValueMap.get(key)}" style='margin-left:5px; width:40%' name='amount${status.count}op' class='amount' placeholder='추가액을 입력해주세요.'>
-						<img onclick='removeDetail(this);' style='cursor:pointer; padding-top:5px; width:10px;' src='<%=request.getContextPath()%>/resources/images/icon/delete.png'></div>
-		              	</c:forEach>	
-					</div>
-		        </c:forEach>
+	              	<div id="div0" style="border: 0.5px solid #BDBDBD; padding: 10px;">
+		              	<input type="hidden" name="chkOption" value="0">
+		              	<p style="cursor: pointer; border-bottom: 0.5px solid #BDBDBD;" onclick="addOption()" id="0op">옵션 추가</p>
+			              	<p style="float: right; cursor: pointer;" onclick="detailOption(this.id)" id="0op">상세옵션 추가</p>
+				              	옵션명 <input type="text" value="${product.optionList.get(0).optionName}" class="option" id="0" name="optionName" placeholder="옵션의 명칭을 입력해주세요."
+				              	style="width: 80%; height: 20px; padding-left:5px; padding-right:5px; font-size: 13px;"><br>
+				              <c:forEach var="key" items="${product.optionList.get(0).optionValueMap.keySet()}">
+				              	<div><input type='text' value="${key}" style='width:40%' name='detailoption0op' class='detailoption' placeholder='상세옵션의 명칭을 입력해주세요.'>
+								<input type='text' value="${product.optionList.get(0).optionValueMap.get(key)}" style='margin-left:5px; width:40%' name='amount0op' class='amount' placeholder='추가액을 입력해주세요.'>
+								<img onclick='removeDetail(this);' style='cursor:pointer; padding-top:5px; width:10px;' src='<%=request.getContextPath()%>/resources/images/icon/delete.png'></div>
+				              </c:forEach>	
+			        </div>
+			        <c:forEach begin="1" end="${product.optionList.size()}" var="option" items="${product.optionList}" varStatus="status">
+						<input type='hidden' name='chkOption' value='${status.count}'>
+						<div id='div${status.count}' style='border: 0.5px solid #BDBDBD; padding: 10px;'>
+						<p style='cursor: pointer; border-bottom: 0.5px solid #BDBDBD;' onclick='removeDetail(this)'>옵션 삭제</p>
+						<p style='float: right; cursor: pointer;' onclick='detailOption(this.id)' id='${status.count}op'>상세옵션 추가</p>
+							옵션명 <input type='text' value="${option.optionName}" class='option' id='${status.count}' name='optionName' placeholder='옵션의 명칭을 입력해주세요.'
+						 	style='width: 80%; height: 20px; padding-left:5px; padding-right:5px; font-size: 13px;'><br>
+						 	<c:forEach var="key" items="${option.optionValueMap.keySet()}">
+			              	<div><input type='text' value="${key}" style='width:40%' name='detailoption${status.count}op' class='detailoption' placeholder='상세옵션의 명칭을 입력해주세요.'>
+							<input type='text' value="${option.optionValueMap.get(key)}" style='margin-left:5px; width:40%' name='amount${status.count}op' class='amount' placeholder='추가액을 입력해주세요.'>
+							<img onclick='removeDetail(this);' style='cursor:pointer; padding-top:5px; width:10px;' src='<%=request.getContextPath()%>/resources/images/icon/delete.png'></div>
+			              	</c:forEach>	
+						</div>
+			        </c:forEach>
 	            </div>
             </div>
           </div> 
