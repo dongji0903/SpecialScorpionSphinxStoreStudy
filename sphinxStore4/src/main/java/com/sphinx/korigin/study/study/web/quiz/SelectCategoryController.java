@@ -21,25 +21,27 @@ public class SelectCategoryController {
 	private WebApplicationContext context;
 
 	@RequestMapping(value = "/study/selectCategory", method = RequestMethod.GET)
-	public String selectCategoryView() {
-		return "include:study/quiz/selectCategory";
+	public String selectCategoryView(Model m) {
+		@SuppressWarnings("unchecked")
+		List<Category> studyRootCategoryList = (List<Category>) context.getServletContext()
+				.getAttribute("studyRootCategoryList");
+		m.addAttribute("categories", studyRootCategoryList);
+		m.addAttribute("url", "korigin/study/study/quiz/selectCategory.jsp");
+		return "korigin/study/form/main_Form";
 	}
 
 	@RequestMapping(value = "/study/selectCategory", method = RequestMethod.POST)
-	public String selectCategory(Model m,
-			@RequestParam("selectCategory") String categoryId,
-			@RequestParam("currentPath") String categoryPath,
-			@RequestParam("totalCount") String countString) {
+	public String selectCategory(Model m, @RequestParam("selectCategory") String categoryId,
+			@RequestParam("currentPath") String categoryPath, @RequestParam("totalCount") String countString) {
 
 		if (categoryId != null) {
 			@SuppressWarnings("unchecked")
-			Map<String, Category> categoryMap = (Map<String, Category>) context
-					.getServletContext().getAttribute("studyCategoryMap");
+			Map<String, Category> categoryMap = (Map<String, Category>) context.getServletContext()
+					.getAttribute("studyCategoryMap");
 			Category category = categoryMap.get(categoryId);
 			if (category != null) {
 				List<Category> subCategories = new ArrayList<>();
-				if (category.getChildren() != null
-						&& !category.getChildren().isEmpty()) {
+				if (category.getChildren() != null && !category.getChildren().isEmpty()) {
 					for (String s : category.getChildren()) {
 						subCategories.add(categoryMap.get(s));
 					}
@@ -48,8 +50,7 @@ public class SelectCategoryController {
 				if (subCategories != null && !subCategories.isEmpty()) {
 					m.addAttribute("categories", subCategories);
 					if (categoryPath != null && !categoryPath.equals("")) {
-						m.addAttribute("categoryPath",
-								categoryPath + ">" + category.getTitle());
+						m.addAttribute("categoryPath", categoryPath + ">" + category.getTitle());
 					} else {
 						m.addAttribute("categoryPath", category.getTitle());
 					}

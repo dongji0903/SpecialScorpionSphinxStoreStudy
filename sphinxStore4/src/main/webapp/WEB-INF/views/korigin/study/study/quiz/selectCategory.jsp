@@ -51,7 +51,7 @@ function checkCount() {
 				<div id="menu_Link">
 					<c:if test="${categoryPath!=null }">─ </c:if>
 					<a
-						href="<%=request.getContextPath()%>/study/selectCategory.do?selectCategory=${category.cid}"
+						href="<%=request.getContextPath()%>/study/selectCategory?selectCategory=${category.cid}"
 						name="selectCategory">${category.title}</a>
 				</div>
 			</c:forEach>
